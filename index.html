@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jori O'Neale â Head of Author Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #B8922A;
+    --gold-light: #D4AA4A;
+    --gold-pale: #F5EDD6;
+    --ink: #1A1A1A;
+    --ink-mid: #3D3D3D;
+    --ink-soft: #6B6B6B;
+    --rule: #C8A84B;
+    --bg: #FDFAF4;
+    --white: #FFFFFF;
+    --accent-block: #1C2333;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 9.5pt;
+    line-height: 1.6;
+  }
+  .page {
+    max-width: 850px;
+    margin: 0 auto;
+    background: var(--white);
+    box-shadow: 0 4px 40px rgba(0,0,0,0.12);
+  }
+  /* ââ HEADER ââ */
+  .header {
+    background: var(--accent-block);
+    padding: 48px 56px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 320px; height: 100%;
+    background: linear-gradient(135deg, transparent 40%, rgba(184,146,42,0.08) 100%);
+    pointer-events: none;
+  }
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+  }
+  .name-block h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 46pt;
+    font-weight: 300;
+    color: var(--white);
+    letter-spacing: 1px;
+    line-height: 1;
+  }
+  .name-block h1 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+  .name-block .credentials {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 7.5pt;
+    font-weight: 500;
+    letter-spacing: 3px;
+    color: var(--gold-light);
+    text-transform: uppercase;
+    margin-top: 6px;
+  }
+  .name-block .target-role {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 8pt;
+    font-weight: 600;
+    letter-spacing: 4px;
+    color: rgba(255,255,255,0.45);
+    text-transform: uppercase;
+    margin-top: 3px;
+  }
+  .contact-block {
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .contact-block p {
+    font-size: 7.5pt;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.9;
+    letter-spacing: 0.3px;
+  }
+  .contact-block p a,
+  .contact-block p span {
+    color: var(--gold-light);
+    text-decoration: none;
+  }
+  .gold-rule {
+    height: 1.5px;
+    background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 50%, transparent 100%);
+    margin-top: 28px;
+  }
+  /* ââ TAGLINE STRIP ââ */
+  .tagline-strip {
+    background: var(--gold-pale);
+    padding: 10px 56px;
+    border-bottom: 1px solid #E5D5A8;
+  }
+  .tagline-strip p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11pt;
+    font-style: italic;
+    color: var(--gold);
+    letter-spacing: 0.3px;
+  }
+  /* ââ BODY ââ */
+  .body {
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 0;
+  }
+  /* ââ MAIN COLUMN ââ */
+  .main {
+    padding: 36px 40px 40px 56px;
+    border-right: 1px solid #EDDED8;
+  }
+  /* ââ SIDEBAR ââ */
+  .sidebar {
+    padding: 36px 32px 40px 28px;
+    background: #FDFAF4;
+  }
+  /* ââ SECTION HEADERS ââ */
+  .section-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 6.5pt;
+    font-weight: 700;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    border-bottom: 1.5px solid var(--gold-light);
+    padding-bottom: 5px;
+    margin-bottom: 14px;
+  }
+  .section { margin-bottom: 28px; }
+  /* ââ SUMMARY ââ */
+  .summary-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11.5pt;
+    font-weight: 400;
+    line-height: 1.75;
+    color: var(--ink-mid);
+  }
+  /* ââ EXPERIENCE ââ */
+  .job { margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #EEE8DC; }
+  .job:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+  .job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2px;
+    gap: 12px;
+  }
+  .job-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 12.5pt;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  .job-dates {
+    font-size: 7pt;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: var(--gold);
+    white-space: nowrap;
+    flex-shrink: 0;
+    padding-top: 2px;
+    text-transform: uppercase;
+  }
+  .job-company {
+    font-size: 7.5pt;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 8px;
+  }
+  .bullet-list {
+    list-style: none;
+    padding: 0;
+  }
+  .bullet-list li {
+    font-size: 8.5pt;
+    color: var(--ink-mid);
+    line-height: 1.65;
+    padding-left: 14px;
+    position: relative;
+    margin-bottom: 3px;
+  }
+  .bullet-list li::before {
+    content: 'â';
+    position: absolute;
+    left: 0;
+    top: 1px;
+    font-size: 5pt;
+    color: var(--gold);
+    line-height: 1.8;
+  }
+  /* ââ SIDEBAR SECTIONS ââ */
+  .sidebar .section-title {
+    font-size: 6pt;
+    letter-spacing: 2.5px;
+  }
+  .skill-tag {
+    display: inline-block;
+    background: var(--gold-pale);
+    border: 1px solid #D4AA4A55;
+    color: var(--ink-mid);
+    font-size: 7pt;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    padding: 3px 8px;
+    margin: 2px 2px 2px 0;
+    border-radius: 2px;
+  }
+  .stat-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22pt;
+    font-weight: 600;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 7.5pt;
+    color: var(--ink-soft);
+    line-height: 1.3;
+    font-weight: 500;
+  }
+  .award-item {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+    align-items: flex-start;
+  }
+  .award-dot {
+    width: 5px;
+    height: 5px;
+    background: var(--gold);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 5px;
+  }
+  .award-item p {
+    font-size: 7.5pt;
+    color: var(--ink-mid);
+    line-height: 1.5;
+  }
+  .award-item p strong {
+    display: block;
+    font-size: 7.5pt;
+    font-weight: 700;
+    color: var(--ink);
+  }
+  .speaking-item {
+    margin-bottom: 7px;
+  }
+  .speaking-item .evt {
+    font-size: 7.5pt;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+  .speaking-item .evt-meta {
+    font-size: 7pt;
+    color: var(--ink-soft);
+  }
+  .divider-line {
+    height: 1px;
+    background: #EEE8DC;
+    margin: 14px 0;
+  }
+  /* Print styles */
+  @media print {
+    body { background: white; }
+    .page { box-shadow: none; max-width: 100%; }
+  }
+  @media screen {
+    body { padding: 24px 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-top">
+      <div class="name-block">
+        <h1>Jori <em>O'Neale</em></h1>
+        <div class="credentials">M.S.Ed. Â· Certified Brisk AI Professional Â· Ordained Minister</div>
+        <div class="target-role">Authority Architect &amp; Publishing Strategist</div>
+      </div>
+      <div class="contact-block">
+        <p><span>jorioneale@gmail.com</span></p>
+        <p>516-610-0250</p>
+        <p>Freeport, New York</p>
+        <p><span>linkedin.com/in/jorioneale</span></p>
+      </div>
+    </div>
+    <div class="gold-rule"></div>
+  </div>
+  <!-- TAGLINE -->
+  <div class="tagline-strip">
+    <p>"Building author ecosystems at the intersection of faith, story, innovation, and scale."</p>
+  </div>
+  <!-- BODY -->
+  <div class="body">
+    <!-- MAIN COLUMN -->
+    <div class="main">
+      <!-- EXECUTIVE SUMMARY -->
+      <div class="section">
+        <div class="section-title">Executive Profile</div>
+        <p class="summary-text">
+          Transformational publishing executive and author services strategist with a proven record of architecting scalable, AI-powered systems that bring books from concept to market. Co-owner of The 1 and Only Publishing with a bold mission to publish 555,000 books in 10 languages by 2035. Creator of the voice-first "Talk Your Book" methodologyâenabling time-pressed, neurodivergent, and faith-based authors to produce professionally published works without traditional writing barriers. Backed by 22 years in education, 13+ published titles, and a portfolio of 7+ ghostwritten bestsellers, I build author services infrastructure that delivers quality at scale while preserving every client's authentic voice.
+        </p>
+      </div>
+      <!-- PROFESSIONAL EXPERIENCE -->
+      <div class="section">
+        <div class="section-title">Professional Experience</div>
+        <!-- JOB 1 -->
+        <div class="job">
+          <div class="job-header">
+            <div class="job-title">Chief Story Officer &amp; Co-Owner</div>
+            <div class="job-dates">2024 â Present</div>
+          </div>
+          <div class="job-company">The 1 and Only Publishing Â· Lanham, MD</div>
+          <ul class="bullet-list">
+            <li>Architected an AI-assisted, voice-first publishing model that has produced 13+ titles across diverse genres and author demographics in under three years.</li>
+            <li>Developed the "Talk Your Book" proprietary methodology, converting spoken voice notes into manuscript-ready contentâeliminating barriers for busy professionals and neurodivergent creatives.</li>
+            <li>Designed and deployed a full author services pipelineâfrom intake and voice recording to manuscript development, editing, cover design, and Amazon launchâresulting in multiple 5-star-rated releases.</li>
+            <li>Pioneered AI adoption in the publishing workflow beginning late 2022, integrating tools including Copy.ai, Otter.ai, and Brisk AI before mainstream industry adoption.</li>
+            <li>Managed ghostwriting and editorial services for 7+ clients simultaneously, producing titles that hit Amazon bestseller and 5-star ratings while maintaining distinct author voices.</li>
+            <li>Built scalable SOPs, delegation frameworks, and client onboarding systems enabling team growth without quality loss, including VA delegation protocols and client pipeline automations.</li>
+            <li>Driving toward an audacious mission: 555,000 books published in 10 languages by 2035, amplifying underrepresented voices globally.</li>
+          </ul>
+        </div>
+        <!-- JOB 2 -->
+        <div class="job">
+          <div class="job-header">
+            <div class="job-title">Founder &amp; CEO</div>
+            <div class="job-dates">Dec 2025 â Present</div>
+          </div>
+          <div class="job-company">The 1 and Only Agency Â· Lanham, MD</div>
+          <ul class="bullet-list">
+            <li>Launched full-service author services agency in December 2025, expanding beyond publishing into comprehensive brand-building for authors, speakers, and thought leaders.</li>
+            <li>Developing service offerings spanning ghostwriting, book-to-business conversion, speaking placement, content strategy, and LinkedIn authority building.</li>
+            <li>Created proprietary AI-powered offer suites including the "DM to Done Client Pipeline" ($897), "Expert-Story Call" sales framework, and the Authority Stack LinkedIn GPT bundle.</li>
+          </ul>
+        </div>
+        <!-- JOB 3 -->
+        <div class="job">
+          <div class="job-header">
+            <div class="job-title">Founder &amp; Executive Producer</div>
+            <div class="job-dates">2011 â Present</div>
+          </div>
+          <div class="job-company">IYH Innertainment LLC Â· Freeport, NY</div>
+          <ul class="bullet-list">
+            <li>Founded faith-aligned entertainment and voice amplification company; produced Indie Author Fest (Years 1 &amp; 2, Long Island, NY), drawing community leaders, Nassau County officials, and local authors.</li>
+            <li>Designed and hosted multi-format live events and workshops supporting the author-to-speaker pipeline for emerging voices.</li>
+          </ul>
+        </div>
+        <!-- JOB 4 -->
+        <div class="job">
+          <div class="job-header">
+            <div class="job-title">Education Specialist &amp; AI Curriculum Developer</div>
+            <div class="job-dates">2004 â Present</div>
+          </div>
+          <div class="job-company">C.L.E.A.R. Youth Project Â· Teachers Pay Teachers Â· Freeport, NY</div>
+          <ul class="bullet-list">
+            <li>Applied 22 years of education expertise to develop AI literacy resources for K-12 educators; active TPT store of AI tools for educators since 2023.</li>
+            <li>Trained 111+ small business owners at A.SCORE Orlando Workshop on AI integration strategies (December 2024) and delivered AI-focused presentations at Winnette Technical College.</li>
+            <li>Founded C.L.E.A.R. Youth Project, teaching next-generation ethical AI use and storytelling for underrepresented youth communities.</li>
+          </ul>
+        </div>
+      </div>
+      <!-- SPEAKING & THOUGHT LEADERSHIP -->
+      <div class="section">
+        <div class="section-title">Keynote Speaking &amp; Thought Leadership (Selected)</div>
+        <ul class="bullet-list">
+          <li><strong>TEDxDeerParkWomen</strong> â "Doing Better" (2025) | TEDx-recognized talk on anti-hustle culture and purposeful innovation</li>
+          <li><strong>Hello Seven Retreat</strong> â Mini TED Talk, Brooklyn, NY (March 2026) | Invited speaker at high-profile entrepreneurship retreat</li>
+          <li><strong>Harlem Fine Arts Show</strong> â Speaker &amp; Book Signing, Manhattan, NY (February 2026)</li>
+          <li><strong>Bloom Again Conference</strong> â Speaker, Virginia (February 2026)</li>
+          <li><strong>Women's Day</strong> â Featured Speaker, Delaware (March 2026)</li>
+          <li><strong>Blue Ridge Writing &amp; Rhetoric Conference</strong> â "The Power of Storytelling," Radford University (September 2025)</li>
+          <li><strong>A.SCORE Orlando Small Business Workshop</strong> â AI in Business for 111 small business owners nationwide (December 2024)</li>
+          <li><strong>Catskill Christian Women's Conference</strong> â Keynote Speaker, Fall 2024</li>
+          <li><strong>Amplify Your Impact Summit</strong> â Keynote, "The Power of Storytelling" (2022)</li>
+        </ul>
+      </div>
+    </div>
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+      <!-- KEY METRICS -->
+      <div class="section">
+        <div class="section-title">Impact at a Glance</div>
+        <div class="stat-row"><div class="stat-num">13+</div><div class="stat-label">Published titles produced as author or lead ghostwriter</div></div>
+        <div class="stat-row"><div class="stat-num">3</div><div class="stat-label">Years AI-assisted publishing (since late 2022)</div></div>
+        <div class="stat-row"><div class="stat-num">22</div><div class="stat-label">Years combined education &amp; coaching expertise</div></div>
+        <div class="stat-row"><div class="stat-num">555K</div><div class="stat-label">Books mission target in 10 languages by 2035</div></div>
+        <div class="stat-row"><div class="stat-num">2Ã</div><div class="stat-label">Bestselling author (Amazon &amp; B&amp;N)</div></div>
+      </div>
+      <div class="divider-line"></div>
+      <!-- CORE COMPETENCIES -->
+      <div class="section">
+        <div class="section-title">Core Competencies</div>
+        <div>
+          <span class="skill-tag">Author Services Strategy</span>
+          <span class="skill-tag">Ghostwriting</span>
+          <span class="skill-tag">AI Publishing Systems</span>
+          <span class="skill-tag">Voice-First Methodology</span>
+          <span class="skill-tag">Manuscript Development</span>
+          <span class="skill-tag">Book Launch Strategy</span>
+          <span class="skill-tag">Editorial Oversight</span>
+          <span class="skill-tag">Client Pipeline Design</span>
+          <span class="skill-tag">Team SOP Development</span>
+          <span class="skill-tag">Thought Leadership</span>
+          <span class="skill-tag">Hybrid Publishing</span>
+          <span class="skill-tag">Curriculum Design</span>
+          <span class="skill-tag">Speaker Coaching</span>
+          <span class="skill-tag">Faith-Based Content</span>
+          <span class="skill-tag">Amazon Optimization</span>
+        </div>
+      </div>
+      <div class="divider-line"></div>
+      <!-- AWARDS & RECOGNITION -->
+      <div class="section">
+        <div class="section-title">Recognition &amp; Credentials</div>
+        <div class="award-item">
+          <div class="award-dot"></div>
+          <p><strong>TEDx Speaker</strong> TEDxDeerParkWomen, 2025</p>
+        </div>
+        <div class="award-item">
+          <div class="award-dot"></div>
+          <p><strong>Marquis Who's Who Honoree</strong> Listed July 2024 Â· Valid through 2029</p>
+        </div>
+        <div class="award-item">
+          <div class="award-dot"></div>
+          <p><strong>Brisk AI Professional â Level 1</strong> Credential ID: 345c3987 Â· Sep 2024</p>
+        </div>
+        <div class="award-item">
+          <div class="award-dot"></div>
+          <p><strong>Amazon #1 New Release</strong> "Before She Knew Jesus" (Co-Author)</p>
+        </div>
+        <div class="award-item">
+          <div class="award-dot"></div>
+          <p><strong>Barnes &amp; Noble Bestseller</strong> "More Than Enough" (Co-Author)</p>
+        </div>
+        <div class="award-item">
+          <div class="award-dot"></div>
+          <p><strong>Ordained Minister</strong> Faith-integrated leadership &amp; ethics perspective</p>
+        </div>
+      </div>
+      <div class="divider-line"></div>
+      <!-- EDUCATION -->
+      <div class="section">
+        <div class="section-title">Education</div>
+        <div class="award-item">
+          <div class="award-dot"></div>
+          <p><strong>M.S.Ed., Exercise Science / Physical Education</strong> Graduate Degree</p>
+        </div>
+        <div class="award-item">
+          <div class="award-dot"></div>
+          <p><strong>Brisk AI Professional Certification</strong> Brisk Teaching, 2024</p>
+        </div>
+      </div>
+      <div class="divider-line"></div>
+      <!-- COMPANIES -->
+      <div class="section">
+        <div class="section-title">Business Portfolio</div>
+        <div class="award-item">
+          <div class="award-dot"></div>
+          <p><strong>The 1 and Only Publishing</strong> Co-Owner â Hybrid &amp; ghostwriting press</p>
+        </div>
+        <div class="award-item">
+          <div class="award-dot"></div>
+          <p><strong>The 1 and Only Agency</strong> Founder â Author services agency (est. Dec 2025)</p>
+        </div>
+        <div class="award-item">
+          <div class="award-dot"></div>
+          <p><strong>IYH Innertainment LLC</strong> Founder â Events &amp; faith entertainment (est. 2011)</p>
+        </div>
+        <div class="award-item">
+          <div class="award-dot"></div>
+          <p><strong>C.L.E.A.R. Youth Project</strong> Founder â Youth education &amp; AI literacy</p>
+        </div>
+        <div class="award-item">
+          <div class="award-dot"></div>
+          <p><strong>Creatives United</strong> Founder â Community network for emerging creatives &amp; authors</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
